@@ -59,7 +59,7 @@ Experiment Setup in Second Terminal
 11. Source a setup script to have Pegasus and HTCondor in your path
     ```shell
     source bin/setup.sh
-    ```shell
+    ```
 
 12. Check condor is up and running
     ```shell
