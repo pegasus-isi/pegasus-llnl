@@ -6,6 +6,9 @@ This is an experimental research setup, for creating and running large HPC and B
 
 Instructions
 ------------
+
+## Submit a Magpie job and start HTCondor and Pegasus on Magpie master node
+ 
 1. set environment varilable PEGASUS_LLNL_WORK_HOME to the directory where you checked out the pegasus-llnl repo
    ```shell
    cd pegasus-llnl
@@ -48,8 +51,9 @@ Instructions
 9. Logon to the magpie master node as identified in Step 6
    
 
-Experiment Setup in Second Terminal
---------------------------------------
+## Experiment Setup on Magpie Master 
+**The steps listed below should be done in a new terminal**
+
 10. set environment varilable PEGASUS_LLNL_WORK_HOME to the directory where you checked out the pegasus-llnl repo
    ```shell    
    cd pegasus-llnl
