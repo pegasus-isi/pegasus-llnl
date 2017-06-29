@@ -1,8 +1,9 @@
 Pegasus and Big Data Workflows on LLNL
 --------------------------------------------
 
-This allows you to setup a Pegasus and a HTCondor pool via Magpie on a SLRUM job provisioned by Magpie using sbatch
-This is an experimental research setup, for creating and running large HPC and Big Data In-situ worklfows that run on catalyst.
+This allows you to setup a Pegasus and a HTCondor pool via Magpie on a SLRUM job provisioned by Magpie using sbatch . This is an experimental research setup, for creating and running large HPC and Big Data In-situ worklfows that run on catalyst.
+
+In this approach, we use Magpie a LLNL tool to create and setup environment for Big Data analysis, to provision nodes from the SLURM cluster. On the Magpie master node, a pegasus setup script is executed to start HTCondor workflow submit node. Once HTCondor is setup, the user is required to login to the Magpie master node and setup their environment to reflect to mimic the environment that is setup by sbatch when it runs the Magpie job.This allows us to ensure that any Pegasus workflows submitted on the master node, are run on the same set of nodes as provisioned for the Magpie job. The compute jobs in the Pegasus workflows need to be submitted via srun . An example workflow that illustrates this can be found in the examples/mpi-hw-slurm directory. 
 
 Instructions
 ------------
