@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+/usr/bin/hostname
+
+
+if [ x${PEGASUS_LLNL_WORK_HOME} == x ]; then
+    echo "Please set PEGASUS_LLNL_WORK_HOME to check out of pegasus-llnl repo"
+    exit
+fi
+
+source $PEGASUS_LLNL_WORK_HOME/bin/setup.sh
+
+
+
+echo "Starting up HTCONDOR"
+condor_start
+
+MAGPIE_SBATCH_ENV=$PEGASUS_LLNL_WORK_HOME/magpie.env
+/bin/env > $MAGPIE_SBATCH_ENV
+
+# sleep should be time for sbatch job - (mapgie start + magpie shutdown time)
+/bin/sleep 180000

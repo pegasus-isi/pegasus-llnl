@@ -1,0 +1,32 @@
+# This is the transformation catalog. It lists information about each of the
+# executables that are used by the workflow.
+
+tr preprocess {
+    site catalyst {
+        pfn "${WF_DIR}/bin/preprocess"
+        arch "x86_64"
+        os "linux"
+        type "INSTALLED"
+	profile pegasus "cores" "1"
+    }
+}
+
+tr findrange {
+    site catalyst {
+        pfn "${WF_DIR}/bin/findrange"
+        arch "x86_64"
+        os "linux"
+        type "INSTALLED"
+	profile pegasus "cores" "1"
+    }
+}
+
+tr analyze {
+    site catalyst {
+        pfn "${WF_DIR}/bin/analyze"
+        arch "x86_64"
+        os "linux"
+        type "INSTALLED"
+	profile pegasus "cores" "1"
+    }
+}
