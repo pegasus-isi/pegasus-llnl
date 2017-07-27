@@ -152,7 +152,7 @@ This directory is the place where pre-built executables of lulesh_par and their 
 This directory includes the pegasus files to create and submit an alpine MPI workflow.
 
 **Inside spark-pegasus**
-This directory includes the pegasus files to create and submit a spark workflow. Each time a new dax is created for a new spark simulation job. The dax is inside workflows directory. dax_generator.sh is a script that was mentioned in event-config that generates the dax for every new simulation jobs.
+This directory includes the pegasus files to create and submit a spark workflow. Each time a new dax is created for a new spark simulation job. The dax is inside workflows directory. dax_generator.sh is a script that was mentioned in event-config that generates the dax for every new spark analysis jobs.
 
 
 **How to run**
