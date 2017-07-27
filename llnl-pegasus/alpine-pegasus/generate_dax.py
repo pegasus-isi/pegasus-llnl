@@ -18,13 +18,14 @@ alpine_tst_wf = ADAG("alpine-test-workflow")
 cur_dir = os.getcwd()
 
 actions_json = File("alpine_actions.json")
-actions_json.addPFN(PFN("file:///g/g91/pandey1/pegasus-llnl/llnl-pegasus/alpine/alpine_actions.json","catalyst"))
+exe_inp_dir = os.environ[PEGASUS_LLNL_WORK_HOME]
+actions_json.addPFN(PFN("file://"+exe_inp_dir+"/alpine/alpine_actions.json","catalyst"))
 
 options_json = File("alpine_options.json")
-options_json.addPFN(PFN("file:///g/g91/pandey1/pegasus-llnl/llnl-pegasus/alpine/alpine_options.json","catalyst"))
+options_json.addPFN(PFN("file://"+exe_inp_dir+"/alpine/alpine_options.json","catalyst"))
 
 lulesh_par = File("lulesh_par")
-lulesh_par.addPFN(PFN("file:///g/g91/pandey1/pegasus-llnl/llnl-pegasus/alpine/lulesh_par","catalyst"))
+lulesh_par.addPFN(PFN("file://"+exe_inp_dir+"/alpine/lulesh_par","catalyst"))
 
 
 alpine_tst_wf.addFile(options_json)
