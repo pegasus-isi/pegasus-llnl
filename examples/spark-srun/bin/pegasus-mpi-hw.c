@@ -60,7 +60,7 @@ int main(int argc, char **argv){
   else{
     worker( rank );
   }
-   sleep(300);
+
   //shutdown MPI
   MPI_Finalize();
   return 0;

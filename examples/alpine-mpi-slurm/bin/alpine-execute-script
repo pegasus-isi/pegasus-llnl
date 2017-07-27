@@ -1,0 +1,4 @@
+#!/bin/bash
+source /g/g91/pandey1/pegasus-llnl/my-job-env-pegasus
+#$SPARK_HOME/bin/spark-submit --master yarn --deploy-mode cluster --driver-memory 1g --executor-memory 1g --executor-cores 4 --num-executors 2 "$@"
+srun -N 2 -n 8 --exclude=$SPARK_MASTER_NODE lulesh_par

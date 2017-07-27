@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# before launching the job switch to the directory that
+# pegasus created for the workflow
+#echo 
+#cd $PEGASUS_SCRATCH_DIR
+#pwd
+#unset TMP
+#unset TMPDIR
+#unset TEMP
+#export SPARK_HOME="/usr/tce/packages/spark/spark-2.1.0-bin-hadoop2.7"
+source /g/g91/pandey1/pegasus-llnl/my-job-env-pegasus
+$SPARK_HOME/bin/spark-submit --master yarn --deploy-mode cluster --driver-memory 1g --executor-memory 1g --executor-cores 4 --num-executors 2 "$@"

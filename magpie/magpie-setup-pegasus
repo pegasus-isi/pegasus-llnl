@@ -19,5 +19,35 @@ condor_start
 MAGPIE_SBATCH_ENV=$PEGASUS_LLNL_WORK_HOME/magpie.env
 /bin/env > $MAGPIE_SBATCH_ENV
 
+echo "Starting Ensemble Manager"
+pegasus-em server &
+
+/bin/sleep 10
+
+if [ -f $HOME/.pegasus/workflow.db ]; then
+  rm $HOME/.pegasus/workflow.db
+fi
+
+echo "Creating new Ensemble Database"
+pegasus-db-admin update
+
+echo "Creating new Ensemble"
+cd $HOME/diamond
+pegasus-em create -v $HOME/diamond/event-config b
+
+echo "Submiting MPI workflow to the Ensemble"
+cd $PEGASUS_LLNL_WORK_HOME/examples/alpine-test-slurm
+pegasus-em submit b.mpi ./plan_dax.sh alpine-test.dax
+pegasus-em config b -P 1000 -R 1000
+
+
+#cd $PEGASUS_LLNL_WORK_HOME/examples/mpi-hw-slurm/
+#pegasus-em submit a.1 ./plan_dax.sh mpi-hw.dax
+#
+#
+#cd $PEGASUS_LLNL_WORK_HOME/examples/spark-test-slurm/
+#pegasus-em submit a.2 ./plan_dax.sh spark-test.dax
+
+
 # sleep should be time for sbatch job - (mapgie start + magpie shutdown time)
 /bin/sleep 180000

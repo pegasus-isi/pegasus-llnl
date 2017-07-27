@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Common environment variables for Job = magpie-pegasus, Job ID = 2621751
+
+export JAVA_HOME="/usr/lib/jvm/java-1.7.0-oracle/"
+
+export HADOOP_HOME="/usr/tce/packages/hadoop/hadoop-2.7.3"
+export HADOOP_CONF_DIR="/tmp/pandey1/hadoop/magpie-pegasus/2621751/conf"
+export HADOOP_LOG_DIR="/tmp/pandey1/hadoop/magpie-pegasus/2621751/log"
+export HADOOP_MASTER_NODE="catalyst215"
+export HADOOP_SLAVE_COUNT="2"
+export HADOOP_SLAVE_CORE_COUNT="96"
+export HADOOP_NAMENODE="catalyst215"
+export HADOOP_NAMENODE_PORT="54310"
+export HADOOP_VERSION="2.7.3"
+
+export SPARK_HOME="/usr/tce/packages/spark/spark-2.1.0-bin-hadoop2.7"
+export SPARK_CONF_DIR="/tmp/pandey1/spark/magpie-pegasus/2621751/conf"
+export SPARK_LOG_DIR="/tmp/pandey1/spark/magpie-pegasus/2621751/log"
+export SPARK_MASTER_NODE="catalyst215"
+export SPARK_SLAVE_COUNT="2"
+export SPARK_SLAVE_CORE_COUNT="96"
+export SPARK_VERSION="2.1.0-bin-hadoop2.7"
+

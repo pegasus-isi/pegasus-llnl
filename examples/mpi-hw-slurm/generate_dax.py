@@ -33,7 +33,7 @@ mpi_hw_wf.addFile(fin)
 # Add the mpi hello world job
 mpi_hw_job = Job(namespace="pegasus", name="mpihw" )
 fout = File("f.out")
-mpi_hw_job.addArguments("-n 11 -N 11 -c 1 ", os.getcwd() + "/bin/mpi-hello-world-wrapper", "-o", fout )
+mpi_hw_job.addArguments("-n 3 -N 3 -c 1 ", os.getcwd() + "/bin/mpi-hello-world-wrapper", "-o", fout )
 mpi_hw_job.uses(fin, link=Link.INPUT)
 mpi_hw_job.uses(fout, link=Link.OUTPUT)
 

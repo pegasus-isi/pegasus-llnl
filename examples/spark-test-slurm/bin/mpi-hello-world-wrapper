@@ -6,4 +6,4 @@ cd $PEGASUS_SCRATCH_DIR
 unset TMP
 unset TMPDIR
 unset TEMP
-/g/g91/pandey1/pegasus-llnl/examples/mpi-hw-slurm/bin/pegasus-mpi-hw "$@"
+/g/g91/pandey1/pegasus-llnl/examples/spark-test-slurm/bin/pegasus-mpi-hw "$@"

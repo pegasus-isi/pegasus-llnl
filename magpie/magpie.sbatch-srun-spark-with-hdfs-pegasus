@@ -37,12 +37,12 @@
 # Also take into account additional nodes needed for other services,
 # for example HDFS federation.
 
-#SBATCH --nodes=11
+#SBATCH --nodes=3
 #SBATCH --output="slurm-%j.out"
 
 # Note defaults of MAGPIE_STARTUP_TIME & MAGPIE_SHUTDOWN_TIME, this
 # timelimit should be a fair amount larger than them combined.
-#SBATCH --time=2:00:00
+#SBATCH --time=9:30:00
 
 # Job name.  This will be used in naming directories for the job.
 #SBATCH --job-name=magpie-pegasus
@@ -250,7 +250,7 @@ export HADOOP_SETUP=yes
 # HADOOP_FILESYSTEM_MODE, such as "hdfs", "hdfsoverlustre", or
 # "hdfsovernetworkfs".
 #
-export HADOOP_SETUP_TYPE="HDFS2"
+export HADOOP_SETUP_TYPE="MR2"
 
 # Version
 #
@@ -921,7 +921,7 @@ export SPARK_MODE="sparkpi"
 #
 # Defaults to no.
 #
-# export SPARK_USE_YARN=yes
+export SPARK_USE_YARN=yes
 
 # SPARK_YARN_STAGING_DIR
 #
@@ -936,7 +936,7 @@ export SPARK_MODE="sparkpi"
 # 
 # This option is only available beginning in Spark 2.0.
 #
-# export SPARK_YARN_STAGING_DIR="file:///p/lscratche/${USER}/sparkStaging/"
+export SPARK_YARN_STAGING_DIR="file:///p/lscratche/${USER}/sparkStaging/"
 
 ############################################################################
 # Spark SparkPi Configuration

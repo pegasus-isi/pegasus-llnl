@@ -7,4 +7,4 @@ if [ x${PEGASUS_LLNL_WORK_HOME} == x ]; then
     exit
 fi
 export PATH=${PEGASUS_LLNL_WORK_HOME}/bin:${PATH}
-source /usr/workspace/wsb/alemm/pegasus/pegasus-user-env.sh 
+source /usr/workspace/wsb/alemm/pegasus/pegasus-user-env-test.sh 
