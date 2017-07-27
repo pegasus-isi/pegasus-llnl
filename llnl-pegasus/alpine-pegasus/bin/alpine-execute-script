@@ -1,0 +1,4 @@
+#!/bin/bash
+source /g/g91/pandey1/llnl-pegasus/my-job-env-pegasus
+srun -N 2 -n 8 -c 1 --exclude=$SPARK_MASTER_NODE --cpu_bind=cores lulesh_par
+#srun -N 2 -n 8 -c 1 --exclusive lulesh_par

@@ -1,0 +1,65 @@
+#!/bin/sh
+
+set -e
+/usr/bin/hostname
+
+
+if [ x${PEGASUS_LLNL_WORK_HOME} == x ]; then
+    echo "Please set PEGASUS_LLNL_WORK_HOME to check out of pegasus-llnl repo"
+    exit
+fi
+
+
+#nodelist=$(scontrol show hostname $SLURM_NODELIST)
+#nodelist=(${nodelist// / })
+#
+#
+#updatedlist=""
+#for i in ${!nodelist[@]}
+#do
+# if [ "${nodelist[i]}" != "$SPARK_MASTER_NODE" ]; then
+#   NUMBER=$(echo ${nodelist[i]} | tr -dc '0-9')
+#   updatedlist="$updatedlist$NUMBER,"
+# fi
+#done
+#updatedlist="catalyst[$updatedlist"
+#updatedlist=${updatedlist:0:-1}
+#updatedlist="$updatedlist]"
+#SLURM_NNODES=3
+#SLURM_NNODES=$((SLURM_NNODES-1))
+#export SLURM_NODELIST=$updatedlist
+#export SLURM_NNODES=$((SLURM_NNODES))
+#
+#echo $SLURM_NODELIST
+#echo $SLURM_NNODES
+
+source $PEGASUS_LLNL_WORK_HOME/bin/setup.sh
+
+echo "Starting up HTCONDOR"
+condor_start
+
+echo "Creating new Ensemble Database"
+pegasus-db-admin update
+
+echo "Starting Ensemble Manager"
+pegasus-em server &
+
+/bin/sleep 10
+
+#if [ -f $HOME/.pegasus/workflow.db ]; then
+#  rm $HOME/.pegasus/workflow.db
+#fi
+
+
+echo "Creating new Ensemble"
+cd $PEGASUS_LLNL_WORK_HOME
+pegasus-em create -v $PEGASUS_LLNL_WORK_HOME/config/event-config a
+
+echo "Submiting MPI workflow to the Ensemble"
+cd $PEGASUS_LLNL_WORK_HOME/alpine-pegasus
+pegasus-em submit a.mpi ./plan_dax.sh alpine-mpi.dax
+pegasus-em config a -P 1000 -R 1000
+
+
+# sleep should be time for sbatch job - (mapgie start + magpie shutdown time)
+/bin/sleep 180000

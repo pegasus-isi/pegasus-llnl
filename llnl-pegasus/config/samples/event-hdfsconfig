@@ -1,0 +1,8 @@
+{
+ "event-dir":"/",
+ "event-content":"*",
+ "event-type":"hdfs-dir",
+ "event-cycle":[2],
+ "event-size":30,
+ "event-numfiles":2
+}

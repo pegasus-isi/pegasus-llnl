@@ -1,0 +1,24 @@
+[
+  { "action": "add_graph" ,
+    "graph":
+    {
+        "filters": 
+            { "verify": { "type_name": "blueprint_verify",
+                          "params": { "protocol": "mesh"}},
+              "verdict": { "type_name": "verdict"},
+              "save": { "type_name": "relay_io_save",
+                        "params": {"path": "tout_lulesh",
+                                   "protocol": "blueprint/mesh/hdf5"}
+                      }
+             },
+        "connections":
+             [ 
+               { "src": ":source", "dest": "verify"},
+               { "src": "verify", "dest": "verdict"},
+               { "src": "verdict", "dest": "save"}
+             ]
+    }
+  },
+  { "action": "execute"},
+  { "action": "reset"}
+]
