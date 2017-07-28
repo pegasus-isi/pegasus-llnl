@@ -1,3 +1,4 @@
+Phase 1:
 Pegasus and Big Data Workflows on LLNL
 --------------------------------------------
 
@@ -103,3 +104,68 @@ Instructions
     ```shell
     condor_stop
     ```
+    
+Phase 2:
+Instructions
+--------------------------------------------
+llnl-pegasus directory has all required folders to run an alpine MPI workflow and an example spark workflow on catalyst using magpie.
+Go to llnl-pegasus directory
+   ``` shell
+   cd llnl-pegasus
+   ```
+Files to be modified
+--------------------------------------------
+There are several files and folders. 
+**Inside magpie** 
+1. Modify magpie.sbatch-surn-spark-with-hdfs-pegasus to edit SLURM variables as per your need.
+2. magpie-set-pegasus is the custom script that gets executed in Magpie Master.
+
+**service.py**
+This file has the configuration for Ensemble Mangager. 
+``` shell
+    EV_INTERVAL = 1
+```
+Setting the value of this variable to 1 will tell Ensemble Manager to check for the event triggers in every 1 seconds
+
+**Inisde config**
+1. event-config is the configuration file in JSON that tells Ensemble Manager where to look for the events. An example is given below:
+``` json
+   {
+     "event-dir":"/p/lscratchd/pandey1/alpinempi/trigger_files",
+     "event-content":"*",
+     "event-type":"file-dir",
+     "event-cycle":200,
+     "event-size":0,
+     "event-numfiles":1,
+     "pegasus-args": "/g/g91/pandey1/llnl-pegasus/spark-pegasus/plan_dax.sh",
+     "event-script": "/g/g91/pandey1/llnl-pegasus/spark-pegasus/dax_generator.sh",
+     "event-dax-dir": "/g/g91/pandey1/llnl-pegasus/spark-pegasus/workflows"
+    }
+
+```
+   event-dir tells where to look for the trigger files, event-content tells to look for any file names, event-type tells whether the content to watch over is directory or a file, event-size is the size of the trigger files, event-numfiles is the number of files after which trigger will occur. pegasus-args, event-script and event-dax-dir are the pegasus related variables.
+   
+**Inside alpine**
+This directory is the place where pre-built executables of lulesh_par and their input files are kept. This directory can be anywhere but if placed at any other place the absolute path of the lulesh_par and the input files must be mentioned in the alpine dax generator python script which is inside alpine-pegasus folder.
+
+**Inside alpine-pegasus**
+This directory includes the pegasus files to create and submit an alpine MPI workflow.
+
+**Inside spark-pegasus**
+This directory includes the pegasus files to create and submit a spark workflow. Each time a new dax is created for a new spark simulation job. The dax is inside workflows directory. dax_generator.sh is a script that was mentioned in event-config that generates the dax for every new spark analysis jobs.
+
+
+**How to run**
+```python
+   python setup_experiment.py
+```
+
+
+
+  
+   
+   
+   
+
+
+
