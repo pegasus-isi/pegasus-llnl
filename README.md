@@ -105,6 +105,8 @@ Instructions
     condor_stop
     ```
     
+    
+![Alt text](llnl-pegasus/projectflow.png?raw=true "Overall project flow diagram")
 Phase 2:
 Instructions
 --------------------------------------------
