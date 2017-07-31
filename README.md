@@ -168,6 +168,7 @@ Output obtained from the above run:
 ![Alt text](llnl-pegasus/setup_experiment_output.png?raw=true "Setup experiment output")
 
 Once the setup is done, you can ssh to the Master node to check if everything is working:
+
 **Find out which one is the Master node**
 ```shell
    grep SPARK_MASTER_NODE ./my-job-env-pegasus
