@@ -163,6 +163,34 @@ This directory includes the pegasus files to create and submit a spark workflow.
    python setup_experiment.py
 ```
 
+Output obtained from the above run:
+
+![Alt text](llnl-pegasus/setup_experiment_output.png?raw=true "Setup experiment output")
+
+Once the setup is done, you can ssh to the Master node to check if everything is working:
+**Find out which one is the Master node**
+```shell
+   grep SPARK_MASTER_NODE ./my-job-env-pegasus
+```
+
+**SSH to the Master node**
+```shell
+   ssh catalystX
+```
+
+**Check if MPI job is running**
+```shell
+   export PEGASUS_LLNL_WORK_HOME=`pwd`
+   source bin/setup.sh
+   pegasus-em workflows a
+```
+
+
+
+
+
+
+
 
 
   
