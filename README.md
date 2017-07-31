@@ -179,8 +179,9 @@ Once the setup is done, you can ssh to the Master node to check if everything is
    ssh catalystX
 ```
 
-**Check if MPI job is running**
+**In the Master, Check if MPI job is running**
 ```shell
+   cd to the directory with setup_experiment.py
    export PEGASUS_LLNL_WORK_HOME=`pwd`
    source bin/setup.sh
    pegasus-em workflows a
